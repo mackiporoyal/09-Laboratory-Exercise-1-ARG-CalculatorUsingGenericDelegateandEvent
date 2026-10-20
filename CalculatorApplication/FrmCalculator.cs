@@ -13,12 +13,7 @@ namespace CalculatorApplication
 {
     public partial class frmCalculator : System.Windows.Forms.Form
     {
-        Formula<double> getSum;
-        Formula<double> getDifference;
-        Formula<double> getProduct;
-        Formula<double> getQuotient;
-
-        CalculatorApplication cal;
+        CalculatorClass cal;
 
         public frmCalculator()
         {
@@ -27,36 +22,40 @@ namespace CalculatorApplication
             cbOperator.Items.Add("-");
             cbOperator.Items.Add("x");
             cbOperator.Items.Add("/");
-            cal = new CalculatorApplication();
+            cal = new CalculatorClass();
         }
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            getSum = new Formula<double>(CalculatorClass.getSum);
-            getDifference = new Formula<double>(CalculatorClass.getDifference);
-            getProduct = new Formula<double>(CalculatorClass.getProduct);
-            getQuotient = new Formula<double>(CalculatorClass.getQuotient);
+            
             double firstNum = Convert.ToDouble(txtBoxInput1.Text);
             double secondNum = Convert.ToDouble(txtBoxInput2.Text);
             string Caloperator = cbOperator.SelectedItem.ToString();
 
             switch (Caloperator) {
                 case "+":
-                    CalculatorApplication
-                    lblAnswer.Text = getSum(firstNum, secondNum).ToString();
+                    cal.CalculateEvent += new Formula<double>(cal.GetSum);
+                    lblAnswer.Text = cal.GetSum(firstNum, secondNum).ToString();
+                    cal.CalculateEvent -= new Formula<double>(cal.GetSum);
                     break;
                 case "-":
-                    lblAnswer.Text = getDifference(firstNum, secondNum).ToString();
+                    cal.CalculateEvent += new Formula<double>(cal.GetDifference);
+                    lblAnswer.Text = cal.GetDifference(firstNum, secondNum).ToString();
+                    cal.CalculateEvent -= new Formula<double>(cal.GetDifference);
                     break;
                 case "x":
-                    lblAnswer.Text = getProduct(firstNum, secondNum).ToString();
+                    cal.CalculateEvent += new Formula<double>(cal.GetProduct);
+                    lblAnswer.Text = cal.GetProduct(firstNum, secondNum).ToString();
+                    cal.CalculateEvent -= new Formula<double>(cal.GetProduct);
                     break;
                 case "/":
-                    lblAnswer.Text = getQuotient(firstNum, secondNum).ToString();
+                    cal.CalculateEvent += new Formula<double>(cal.GetQuotient);
+                    lblAnswer.Text = cal.GetQuotient(firstNum, secondNum).ToString();
+                    cal.CalculateEvent -= new Formula<double>(cal.GetQuotient);
                     break;
                 default:
                     lblAnswer.Text = "Invalid Operator";
                     break;
             }
-            }
+        }
     }
 }

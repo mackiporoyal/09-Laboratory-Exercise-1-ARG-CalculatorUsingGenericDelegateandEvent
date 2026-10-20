@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnEqual = new System.Windows.Forms.Button();
             this.lblAnswer = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtBoxInput1
@@ -114,11 +115,25 @@
             this.lblAnswer.TabIndex = 7;
             this.lblAnswer.Text = "00.00";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.ForeColor = System.Drawing.Color.Cornsilk;
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 24);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Sales.corp";
+            // 
             // frmCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(453, 240);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.btnEqual);
             this.Controls.Add(this.label3);
@@ -128,7 +143,7 @@
             this.Controls.Add(this.txtBoxInput2);
             this.Controls.Add(this.txtBoxInput1);
             this.Name = "frmCalculator";
-            this.Text = "Form";
+            this.Text = "Calculator Application";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,6 +159,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnEqual;
         private System.Windows.Forms.Label lblAnswer;
+        private System.Windows.Forms.Label label1;
     }
 }
 
